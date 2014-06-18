@@ -11,7 +11,7 @@ class Login extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-		$this->load->model('LoginModel');
+		$this->load->model('login_model');
 		$this->load->library(array('session','form_validation'));
 		$this->load->helper(array('url','form'));
 		$this->load->database('default');
@@ -36,7 +36,7 @@ class Login extends CI_Controller
             else{
                 $username = $this->input->post('username');
 		$password = sha1($this->input->post('password'));
-		$check_user = $this->LoginModel->login_user($username,$password);
+		$check_user = $this->login_model->login_user($username,$password);
 		if($check_user == TRUE){
                     $data = array(
                         'is_logged_in' 	=> TRUE,
@@ -76,7 +76,7 @@ class Login extends CI_Controller
                 $email = $this->input->post('email');
                 $discipline = $this->input->post('disc');
                 $organization = $this->input->post('org');
-                $add_user = $this->LoginModel->add_user($username,$password, $email, $discipline, $organization);
+                $add_user = $this->login_model->add_user($username,$password, $email, $discipline, $organization);
                 if ($add_user == TRUE){
                    echo "success";
                 }

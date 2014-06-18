@@ -14,8 +14,8 @@
 | path to your installation.
 |
 */
-//$config['base_url']	= 'http://elseweb.cybershare.utep.edu/';
-$config['base_url'] = 'http://localhost:8888/elseweb';   //Probably used for production.
+$config['base_url']	= 'http://elseweb.cybershare.utep.edu/';
+// $config['base_url'] = 'http://localhost:8888/elseweb';   //Probably used for production.
 
 
 
