@@ -66,6 +66,7 @@
     <script src="<?php echo base_url(JS."common-scripts.js");?>"></script>
     <script src="<?php echo base_url(JS."revulation-slide.js");?>"></script>
     <script src="<?php echo base_url(JS."main.js");?>"></script>
+    <script type="text/javascript" src="<?php echo base_url(JS."register.js");?>"></script>
 
    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&AMP;sensor=false"></script>
     

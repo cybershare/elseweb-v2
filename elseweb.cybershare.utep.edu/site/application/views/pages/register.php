@@ -4,7 +4,7 @@
   var disc_url = '<?php echo site_url('register/get_discipline'); ?>';    
   var org_url = '<?php echo site_url('register/get_organization'); ?>'; 
 </script>
-<script type="text/javascript" src="<?php echo base_url(JS."register.js");?>"></script>
+
 
 <!--container start-->
  <div class="container register">
