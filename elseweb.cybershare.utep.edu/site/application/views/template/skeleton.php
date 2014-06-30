@@ -63,13 +63,14 @@
     <script src="<?php echo base_url(JS."jquery.blockUI.js");?>"></script>
     
     <!--common script for all pages-->
-    <script src="<?php echo base_url(JS."angular.min.js");?>"></script>
     <script src="<?php echo base_url(JS."common-scripts.js");?>"></script>
     <script src="<?php echo base_url(JS."revulation-slide.js");?>"></script>
     <script src="<?php echo base_url(JS."main.js");?>"></script>
     <script type="text/javascript" src="<?php echo base_url(JS."register.js");?>"></script>
 
-   <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&AMP;sensor=false"></script>
+   <!-- <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&AMP;sensor=false"></script> -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCotZjhwqwQ-4UjBvZHJNrQK0Yew5M2sOQ&sensor=true"></script> 
+  <script src="<?php echo base_url(JS."experimentgui.js");?>"></script>
     
 
 
@@ -101,24 +102,6 @@
 
       //    fancybox
       jQuery(".fancybox").fancybox();
-
-      //google map
-      function initialize() {
-          var myLatlng = new google.maps.LatLng(31.7694885, -106.5063553);
-          var mapOptions = {
-              zoom: 15,
-              center: myLatlng,
-              mapTypeId: google.maps.MapTypeId.ROADMAP
-          }
-          var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-          var marker = new google.maps.Marker({
-              position: myLatlng,
-              map: map,
-              title: 'Hello World!'
-          });
-      }
-      google.maps.event.addDomListener(window, 'load', initialize);
-
 
   </script>
 

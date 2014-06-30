@@ -20,7 +20,7 @@
                         <li><p><a href="<?php echo LODSPEAKR."instances/elseweb_lifemapper:SpeciesOccurrenceDataset";?>">Species Occurrence Data</a></p></li>
                     </ul>
 
-                    <a href="<?php echo base_url('experiment-gui') ?>" class="btn btn-purchase">Run an Experiment</a></p>
+                    <a href="<?php echo base_url('experimentgui') ?>" class="btn btn-purchase">Run an Experiment</a></p>
 
                 </div>
             </div>

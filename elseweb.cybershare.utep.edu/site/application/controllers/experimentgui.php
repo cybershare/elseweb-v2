@@ -24,7 +24,7 @@ class Experimentgui extends MY_Controller {
             }
             else{
                 $folder = 'template';
-                $this->_render('pages/register',$renderData, $folder);   
+                $this->_render('pages/register',$renderData, $folder);   //to be changed
 
             }
         
