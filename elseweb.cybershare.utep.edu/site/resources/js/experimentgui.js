@@ -132,10 +132,10 @@ var entURL,charURL, sourceURL;
 	function changeBounds(){
 		userBounds = document.getElementById("boundsText").value;
 		boundsArray = userBounds.split(",");
-			north = boundsArray[0];
-			east = boundsArray[1];
-			south = boundsArray[2];
-			west = boundsArray[3];
+			north  = boundsArray[0];
+			east   = boundsArray[1];
+			south  = boundsArray[2];
+			west   = boundsArray[3];
 		
 		bounds = new google.maps.LatLngBounds(
 			 new google.maps.LatLng(south, west),

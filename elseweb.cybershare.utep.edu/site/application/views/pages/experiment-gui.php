@@ -1,13 +1,15 @@
     <!-- Page javascript files -->
     <script src="<?php echo base_url(JS."angular.min.js");?>"></script>
+     <script src="<?php echo base_url(JS."ui-bootstrap-0.11.0.min.js");?>"></script>
     <script src="<?php echo base_url(JS."lodash.underscore.min.js");?>"></script>
+    <script src="<?php echo base_url(JS."angular_species.js");?>"></script>
    <!-- <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&AMP;sensor=false"></script> -->
     <!--  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCotZjhwqwQ-4UjBvZHJNrQK0Yew5M2sOQ&sensor=true"></script> -->
     <!-- <script src="<?php echo base_url(JS."angular-google-maps.min.js");?>"></script> -->
 
 
    <!--container start-->
-    <div class="container">
+   <div class="container" ng-app="elsewebGUI">
 
         <div class="row">
             <!--feature start-->
@@ -36,12 +38,66 @@
                 </div>
                  <!--google map end-->  
             </div>     
-            
         </div>
         
+        <div class="row experiment-row">
+            <div class="col-md-8 col-lg-offset-2 gray-bg">
+                <h4>Species</h4>
+                <p>Select species</p>
+                <form ng-controller="SpeciesController as speciesCtrl">
+                    <div class="form-group">
+                        <select  name="selectSpecimen" class="form-control blck-input">
+                            <option ng-repeat="specimen in species" value="{{specimen.name.value}}">{{specimen.name.value}}</option>  
+                        </select>
+                    </div>
+                </form>                  
+             </div>   
+        </div>
+       
+       <div class="row experiment-row">
+           <div class="col-md-8 col-lg-offset-2 gray-bg">
+               <h4>Data</h4>
+               <p>Select up to 10 data sets</p>
+               <div><button type="button" class="btn btn-purchase" >+ Add data set</button></div>
+               <div class="eq-len">
+                    <table class="table table-striped">
+                        <thead>
+                            <th>Start</th>   
+                            <th>End</th>   
+                            <th>Entity</th>   
+                            <th>Characteristic</th>   
+                            <th>Source</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><input id="start[]" type="text" class="form-control" /></td>
+                                <td><input id="end[]" type="text" class="form-control" /></td>
+                                <td>
+                                    <select  name="selectEntity" class="form-control blck-input">
+                                        <option>-- select...</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select  name="selectChar" class="form-control blck-input">
+                                        <option>-- select...</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select  name="selectSource" class="form-control blck-input">
+                                        <option>-- select...</option>
+                                    </select>
+                                </td>
+                                <td style='text-align:center; vertical-align: middle;'>
+                                   <button type='button' class='btn btn-purchase btn-xs'><span class='glyphicon glyphicon-remove'></span></button> 
+                                </td>
+                            </tr>
+                        </tbody>    
+                    </table>
+               </div>
+           </div>
+           
+       </div>
 
-        
-        
         
     </div>    
     <!--container end-->

@@ -1875,3 +1875,15 @@ ul#filters > .active > span {
     color: #000;
     margin-bottom: 8px;
 }
+
+.blck-input{
+    color: #000; 
+}
+
+.experiment-row{
+    margin-top: 15px; 
+}
+
+.eq-len table tr td{
+    width: 20%;
+}
