@@ -1,12 +1,12 @@
     <!-- Page javascript files -->
     <script src="<?php echo base_url(JS."angular.min.js");?>"></script>
-     <script src="<?php echo base_url(JS."ui-bootstrap-0.11.0.min.js");?>"></script>
+    <script src="<?php echo base_url(JS."ui-bootstrap-0.11.0.min.js");?>"></script>
     <script src="<?php echo base_url(JS."lodash.underscore.min.js");?>"></script>
     <script src="<?php echo base_url(JS."angular_species.js");?>"></script>
-   <!-- <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&AMP;sensor=false"></script> -->
+    <!-- <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&AMP;sensor=false"></script> -->
     <!--  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCotZjhwqwQ-4UjBvZHJNrQK0Yew5M2sOQ&sensor=true"></script> -->
     <!-- <script src="<?php echo base_url(JS."angular-google-maps.min.js");?>"></script> -->
-
+   
 
    <!--container start-->
    <div class="container" ng-app="elsewebGUI">
@@ -57,7 +57,7 @@
        <div class="row experiment-row">
            <div class="col-md-8 col-lg-offset-2 gray-bg">
                <h4>Data</h4>
-               <p>Select up to 10 data sets</p>
+               <p class="">Select up to 10 data sets</p>
                <div><button type="button" class="btn btn-purchase" >+ Add data set</button></div>
                <div class="eq-len">
                     <table class="table table-striped">
@@ -70,8 +70,8 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td><input id="start[]" type="text" class="form-control" /></td>
-                                <td><input id="end[]" type="text" class="form-control" /></td>
+                                <td><input id="start" name="start[]" type="text" class="datepicker form-control" /></td>
+                                <td><input id="end" name="end[]" type="text" class="datepicker form-control" /></td>
                                 <td>
                                     <select  name="selectEntity" class="form-control blck-input">
                                         <option>-- select...</option>

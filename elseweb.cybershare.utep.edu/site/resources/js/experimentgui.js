@@ -1,4 +1,5 @@
 
+//Global Variables
 var rectangle, map, infoWindow, infoWindowBox;
 var bounds = new google.maps.LatLngBounds(new google.maps.LatLng(0, 0), new google.maps.LatLng(0, 0)); 
 var north = [];
@@ -10,6 +11,14 @@ var sw, ne, nw, se;
 var userBounds, boundsArray;
 
 var entURL,charURL, sourceURL;
+
+
+    //datepicker
+    $( ".datepicker" ).datepicker({
+        changeMonth: true,
+        changeYear: true,
+        yearRange: '1900:2099'
+     });
 
 
 
@@ -143,3 +152,6 @@ var entURL,charURL, sourceURL;
 		);
 		initialize();
 	}
+        
+   
+        

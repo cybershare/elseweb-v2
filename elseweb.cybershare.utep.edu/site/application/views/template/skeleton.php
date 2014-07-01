@@ -44,7 +44,7 @@
 <body>
 	<?php echo $body ?>
 	<!-- js placed at the end of the document so the pages load faster -->
-    <script src="<?php echo base_url(JS."jquery.js");?>"></script>
+    <!--  script src="<?php echo base_url(JS."jquery.js");?>"></script>  -->
     <script src="<?php echo base_url(JS."jquery-1.8.3.min.js");?>"></script>
     <script src="<?php echo base_url(JS."bootstrap.min.js");?>"></script>
     <script type="text/javascript" src="<?php echo base_url(JS."hover-dropdown.js");?>"></script>
@@ -102,6 +102,7 @@
 
       //    fancybox
       jQuery(".fancybox").fancybox();
+      
 
   </script>
 
