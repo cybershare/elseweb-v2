@@ -13,15 +13,6 @@ var userBounds, boundsArray;
 var entURL,charURL, sourceURL;
 
 
-    //datepicker
-    $( ".datepicker" ).datepicker({
-        changeMonth: true,
-        changeYear: true,
-        yearRange: '1900:2099'
-     });
-
-
-
       //google map
       function initialize() {
           $( ".no-data" ).hide();

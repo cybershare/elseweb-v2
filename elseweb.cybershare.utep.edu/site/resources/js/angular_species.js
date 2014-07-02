@@ -18,6 +18,59 @@
         });
         
     }]);
+
+    app.controller('DataController', function(){
+        
+        //Global Jquery functions    
+        $(".delete").live('click', function(event) {
+          $(this).parent().parent().remove();
+        });
+        
+        
+        //Functions
+        this.checkRows = function(){
+            var maxRows = 11;
+            var table = document.getElementById('dataInputs');
+            if (table.rows.length < maxRows)
+                return true;
+            return false; 
+        };
+        
+        this.addDataSet = function (){
+           if (this.checkRows()){ 
+                $('#dataInputs tr:last').after('<tr>' +
+                    '<td><input id="start[]" name="start[]" type="text" class="datepicker form-control blck-input" /></td>' +
+                    '<td><input id="end[]" name="end[]" type="text" class="datepicker form-control blck-input" /></td>' +
+                    '<td>' +
+                    '<select  name="selectEntity" class="form-control blck-input">' +
+                    '<option>-- select...</option>' +
+                    '</select>' +
+                    '</td>' +
+                    '<td>' +
+                    '<select  name="selectChar" class="form-control blck-input">' +
+                    '<option>-- select...</option>' +
+                    '</select>' +
+                    '</td>' +
+                    '<td>' +
+                    '<select  name="selectSource" class="form-control blck-input">' +
+                    '<option>-- select...</option>' +
+                    '</select>' +
+                    '</td>' +
+                    '<td style="text-align:center; vertical-align: middle;">' +
+                    '<button  type="button" class="btn btn-purchase btn-xs delete"><span class="glyphicon glyphicon-remove"></span></button>' +
+                    '</td>' +
+                '</tr>'); 
+
+                 //add datepicker to the .datepicker class input elements
+                 $( ".datepicker" ).datepicker({
+                     changeMonth: true,
+                     changeYear: true,
+                     yearRange: '1900:2099'
+                  });
+            }
+        };
+        
+    });
     
 })();
 

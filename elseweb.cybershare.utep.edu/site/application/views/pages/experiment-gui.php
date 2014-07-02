@@ -54,13 +54,13 @@
              </div>   
         </div>
        
-       <div class="row experiment-row">
+       <div class="row experiment-row" ng-controller="DataController as dataCrtl">
            <div class="col-md-8 col-lg-offset-2 gray-bg">
                <h4>Data</h4>
                <p class="">Select up to 10 data sets</p>
-               <div><button type="button" class="btn btn-purchase" >+ Add data set</button></div>
+               <div><button ng-click="dataCrtl.addDataSet()" type="button" class="btn btn-purchase" >+ Add data set</button></div>
                <div class="eq-len">
-                    <table class="table table-striped">
+                    <table id="dataInputs" class="table table-striped">
                         <thead>
                             <th>Start</th>   
                             <th>End</th>   
@@ -69,28 +69,7 @@
                             <th>Source</th>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td><input id="start" name="start[]" type="text" class="datepicker form-control" /></td>
-                                <td><input id="end" name="end[]" type="text" class="datepicker form-control" /></td>
-                                <td>
-                                    <select  name="selectEntity" class="form-control blck-input">
-                                        <option>-- select...</option>
-                                    </select>
-                                </td>
-                                <td>
-                                    <select  name="selectChar" class="form-control blck-input">
-                                        <option>-- select...</option>
-                                    </select>
-                                </td>
-                                <td>
-                                    <select  name="selectSource" class="form-control blck-input">
-                                        <option>-- select...</option>
-                                    </select>
-                                </td>
-                                <td style='text-align:center; vertical-align: middle;'>
-                                   <button type='button' class='btn btn-purchase btn-xs'><span class='glyphicon glyphicon-remove'></span></button> 
-                                </td>
-                            </tr>
+                            <!-- Dynamic rows will be added here -->
                         </tbody>    
                     </table>
                </div>
