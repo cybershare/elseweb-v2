@@ -74,6 +74,40 @@
                     </table>
                </div>
            </div>
+       </div>
+       
+       <div class="row experiment-row"> 
+           <div class="col-md-8 col-lg-offset-2 gray-bg">
+               <h4>Algorithm</h4>
+               <p>Select algorithm and modify parameters' values (default value shown)</p>
+               <div class="col-md-2" style="vertical-align: text-bottom">
+                    <h5>Algorithm:</h5>
+               </div>  
+               <div class="col-md-10">
+                    <form ng-controller="AlgorithmController as algorithmCrtl">
+                         <div class="form-group">
+                             <select  name="selectAlgorithm" class="form-control blck-input">
+                                 <option>----------- please select -----------</option>  
+                                  <option ng-repeat="algorithm in algorithms" value="{{algorithm.algorithmName.value}}">{{algorithm.algorithmName.value}}</option>  
+                             </select>
+                         </div>
+                     </form> 
+               </div>
+               <div class="eq-len">
+                    <table id="algorithmParams" class="table table-striped">
+                        <thead>
+                            <th>Parameter</th>   
+                            <th>Value</th>   
+                            <th>Min</th>   
+                            <th>Max</th>   
+                            <th>Type</th>
+                        </thead>
+                        <tbody>
+                            <!-- Dynamic rows will be added here -->
+                        </tbody>    
+                    </table>
+               </div>
+           </div>
            
        </div>
 
