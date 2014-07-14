@@ -20,10 +20,13 @@
     }]);
 
     app.controller('DataController', function(){
+        var currentRow = 1;
+        
         
         //Global Jquery functions    
         $(".delete").live('click', function(event) {
           $(this).parent().parent().remove();
+          currentRow --;
         });
         
         
@@ -39,8 +42,8 @@
         this.addDataSet = function (){
            if (this.checkRows()){ 
                 $('#dataInputs tr:last').after('<tr>' +
-                    '<td><input id="start[]" name="start[]" type="text" class="datepicker form-control blck-input" /></td>' +
-                    '<td><input id="end[]" name="end[]" type="text" class="datepicker form-control blck-input" /></td>' +
+                    '<td><input id="start'+currentRow+'" name="start[]" type="text" class="datepicker form-control blck-input" /></td>' +
+                    '<td><input id="end'+currentRow+'" name="end[]" type="text" class="datepicker form-control blck-input" /></td>' +
                     '<td>' +
                     '<select  name="selectEntity" class="form-control blck-input">' +
                     '<option>-- select...</option>' +
@@ -59,15 +62,20 @@
                     '<td style="text-align:center; vertical-align: middle;">' +
                     '<button  type="button" class="btn btn-purchase btn-xs delete"><span class="glyphicon glyphicon-remove"></span></button>' +
                     '</td>' +
-                '</tr>'); 
-
-                 //add datepicker to the .datepicker class input elements
-                 $( ".datepicker" ).datepicker({
-                     changeMonth: true,
-                     changeYear: true,
-                     yearRange: '1900:2099'
-                  });
+                    '</tr>');
+                $('#end'+currentRow).datepicker({
+                        changeMonth: true,
+                        changeYear: true,
+                        yearRange: '1900:2099'
+                });
+                $('#start'+currentRow).datepicker({
+                        changeMonth: true,
+                        changeYear: true,
+                        yearRange: '1900:2099'
+                });
+                currentRow++;  
             }
+            
         };
         
     });
