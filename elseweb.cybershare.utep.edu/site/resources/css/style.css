@@ -1860,6 +1860,8 @@ ul#filters > .active > span {
     background: #FF4900;
 }
 
+/* Experiment GUI */
+
 .angular-google-map-container { 
     height: 400px;
     border-radius: 3px;
@@ -1887,3 +1889,35 @@ ul#filters > .active > span {
 .eq-len table tr td{
     width: 20%;
 }
+
+
+.tab-menu .nav>li>a {
+    position: relative;
+    display: block;
+    padding: 10px 25px;
+    margin-right: 5px;
+}
+
+.tab-menu .nav-pills>li>a{
+    border-radius: 5px;
+    background-color: #fbb450;
+    color: #ffffff;
+}
+
+.nav-pills>li.active>a, .nav-pills>li.active>a:hover, .nav-pills>li.active>a:focus {
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #FF4900;
+}
+
+.tab-menu .nav>li>a:hover, .nav>li>a:focus {
+    text-decoration: none;
+    color: #000;
+}
+
+/* Experiment GUI animations */
+
+
+
+
+

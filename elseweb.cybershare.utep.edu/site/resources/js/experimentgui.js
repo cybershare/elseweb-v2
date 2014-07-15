@@ -128,7 +128,7 @@ var entURL,charURL, sourceURL;
 		}); 
 	}
 	
-	//gets user input and creates a rectangle with given bounds
+	//gets user input and creates a rectangle with given bounds (buggy needs remaking)
 	function changeBounds(){
 		userBounds = document.getElementById("boundsText").value;
 		boundsArray = userBounds.split(",");
