@@ -28,7 +28,7 @@
                               <h4>Region</h4>
                               <p>Enter coordinates or drag point in map to set bounding box for the experiment.
                                  Coordinates will update on mouse out event on rectangle layer.</p>
-                              <input ng-model="experiment.coordinates" id="boundsText" class="form-control" placeholder= "e.g. 50, -65.123, 23, -126 (N, E, S, W) (Press the 'TAB' key)" type="text"/>
+                              <input ng-model="experiment.coordinates" disabled="true" id="boundsText" class="form-control" placeholder= "e.g. 50, -65.123, 23, -126 (N, E, S, W) (Press the 'TAB' key)" type="text"/>
                               <div class="no-data alert alert-danger">No data available. Please Change coordinates</div>
                               <div class="data-available alert alert-success">Data Available</div>
                           </div>

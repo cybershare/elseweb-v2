@@ -26,8 +26,7 @@
         };        
             
     }]);
-    
-    
+        
     app.controller('SpeciesController', ['$http' , '$scope', function($http, $scope){
        
         $http.jsonp(url+species+callback).success(function(data){
@@ -46,18 +45,25 @@
         
     }]);
 
-    app.controller('DataController', function(){
+    app.controller('DataController', ['$http' , '$scope', function($http, $scope){
         var currentRow = 1;
+        this.entities = [];
         
-        
-        //Global Jquery functions    
+        /* Dataset Module Jquery Listeners */       
         $(".delete").live('click', function(event) {
           $(this).parent().parent().remove();
           //currentRow --;
         });
         
+        $(".selEnt").live('mouseover', function(event){
+            if (($("#"+this.id+" option").length <= 1)){
+                $("#"+this.id).empty();
+                $scope.populateEntity(this.id); 
+            }
+        });
         
-        //Functions
+        
+        /* Controller Functions */
         this.checkRows = function(){
             var maxRows = 11;
             var table = document.getElementById('dataInputs');
@@ -71,19 +77,19 @@
                 $('#dataInputs tr:last').after('<tr>' +
                     '<td><input id="start'+currentRow+'" name="start[]" type="text" class="datepicker form-control blck-input" /></td>' +
                     '<td><input id="end'+currentRow+'" name="end[]" type="text" class="datepicker form-control blck-input" /></td>' +
-                    '<td>' +
-                    '<select  name="selectEntity" class="form-control blck-input">' +
-                    '<option>-- select...</option>' +
+                    '<td ng-click="dataCrtl.populateEntity(this.id)">' +
+                    '<select  id="selectEntity'+currentRow+'"  name="selectEntity[]" class="form-control blck-input selEnt">' +
+                    '<option>select...</option>' +
                     '</select>' +
                     '</td>' +
                     '<td>' +
-                    '<select  name="selectChar" class="form-control blck-input">' +
-                    '<option>-- select...</option>' +
+                    '<select  id="selectChar'+currentRow+'" name="selectChar[]" class="form-control blck-input">' +
+                    '<option>select...</option>' +
                     '</select>' +
                     '</td>' +
                     '<td>' +
-                    '<select  name="selectSource" class="form-control blck-input">' +
-                    '<option>-- select...</option>' +
+                    '<select  id="selectSource'+currentRow+'" name="selectSource" class="form-control blck-input">' +
+                    '<option>select...</option>' +
                     '</select>' +
                     '</td>' +
                     '<td style="text-align:center; vertical-align: middle;">' +
@@ -103,9 +109,42 @@
                 currentRow++;  
             }
             
+        }; 
+            
+        $scope.populateEntity = function(selectID){
+            alert(selectID);
+            entity = $scope.entityQuery();
+            $http.jsonp(url+entity+callback).success(function(data){
+                $scope.entities = data.results.bindings;
+            });    
+            var options = $("#"+selectID);
+                $.each($scope.entities, function(i, item) {   
+                var text = item.entity.value.replace('http://visko.cybershare.utep.edu/linked-data/edac/services/', '');    
+                options.append($("<option />").val(item.entity.value).text(text));
+            });
+      
         };
         
-    });
+        $scope.entityQuery = function(){
+            userBounds = document.getElementById("boundsText").value;
+	    boundsArray = userBounds.split(",");
+	    north  = boundsArray[0];
+	    east   = boundsArray[1];
+	    south  = boundsArray[2];
+	    west   = boundsArray[3];
+            var queryString = "prefix+elseweb-data%3A+%3Chttp%3A%2F%2Fontology.cybershare.utep.edu%2FELSEWeb%2Felseweb-data.owl%23%3E%0D%0Aprefix+elseweb-edac%3A+%3Chttp%3A%2F%2Fontology.cybershare.utep.edu%2FELSEWeb%2Felseweb-edac.owl%23%3E%0D%0Aselect+distinct+%3Fentity%0D%0Afrom+%3Chttp%3A%2F%2Fontology.cybershare.utep.edu%2FELSEWeb%2Flinked-data%2Fedac%2Fservices%2Fwcs-services.owl%3E%0D%0Awhere%0D%0A%7B%0D%0A%3Fdataset+elseweb-data%3AcoversRegion+%3Fregion.%0D%0A%3Fregion+elseweb-data%3AhasLeftLongitude+%3Fllon.%0D%0A%3Fregion+elseweb-data%3AhasRightLongitude+%3Frlon.%0D%0A%3Fregion+elseweb-data%3AhasLowerLatitude+%3Fllat.%0D%0A%3Fregion+elseweb-data%3AhasUpperLatitude+%3Fulat.%0D%0Afilter%28%3Fllon+%3C%3D+"
+					+ west + 
+					"%29%0D%0Afilter%28%3Frlon+%3E%3D+"
+					+ east + 
+					"%29%0D%0Afilter%28%3Fllat+%3C%3D+"
+					+ south +
+					"%29%0D%0Afilter%28%3Fulat+%3E%3D+"
+					+ north + 
+					"%29%0D%0A%3Fdataset+elseweb-data%3AhasDataBand+%3Fband.%0D%0A%3Fband+elseweb-data%3ArepresentsEntity+%3Fentity.%0D%0A%0D%0A%7D%0D%0A&format=application%2Fjson";
+            return queryString;
+        };
+         
+    }]);
     
 })();
 
