@@ -98,7 +98,7 @@
                                        <div class="form-group">
                                            <select  name="selectAlgorithm" class="form-control blck-input">
                                                <option>----------- please select -----------</option>  
-                                                <option ng-repeat="algorithm in algorithms" value="{{algorithm.algorithmName.value}}">{{algorithm.algorithmName.value}}</option>  
+                                                <option ng-repeat="algorithm in algorithms" value="{{algorithm.algorithmURI.value}}">{{algorithm.algorithmName.value}}</option>  
                                            </select>
                                        </div>
                                    </form> 
