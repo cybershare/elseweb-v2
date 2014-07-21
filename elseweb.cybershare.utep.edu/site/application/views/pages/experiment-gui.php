@@ -1,4 +1,5 @@
     <!-- Page javascript files -->
+    <script src="<?php echo base_url(JS."JSLINQ.js");?>"></script>
     <script src="<?php echo base_url(JS."angular.min.js");?>"></script>
     <script src="<?php echo base_url(JS."ui-bootstrap-0.11.0.min.js");?>"></script>
     <script src="<?php echo base_url(JS."lodash.underscore.min.js");?>"></script>
@@ -86,18 +87,18 @@
                 </div>    
 
                 <div class="tab-panel" ng-show="panel.isSelected(4)">
-                     <div class="row experiment-row"> 
+                     <div class="row experiment-row" ng-controller="AlgorithmController as algorithmCrtl"> 
                          <div class="col-md-12 gray-bg">
                              <h4>Algorithm</h4>
-                             <p>Select algorithm and modify parameters' values (default value shown)</p>
+                             <p>Select algorithm and modify parameters values (default value shown)</p>
                              <div class="col-md-2" style="vertical-align: text-bottom">
                                   <h5>Algorithm:</h5>
                              </div>  
                              <div class="col-md-10">
-                                  <form ng-controller="AlgorithmController as algorithmCrtl">
+                                  <form>
                                        <div class="form-group">
-                                           <select  name="selectAlgorithm" class="form-control blck-input">
-                                               <option>----------- please select -----------</option>  
+                                           <select  ng-model="experiment.algorithm" ng-change="algorithmCrtl.populateParameter()" ng-click="algorithmCtrl.populateParameter()" name="selectAlgorithm" class="form-control blck-input">
+                                                <!-- <option>----------- please select -----------</option> -->  
                                                 <option ng-repeat="algorithm in algorithms" value="{{algorithm.algorithmURI.value}}">{{algorithm.algorithmName.value}}</option>  
                                            </select>
                                        </div>
@@ -113,7 +114,13 @@
                                           <th>Type</th>
                                       </thead>
                                       <tbody>
-                                          <!-- Dynamic rows will be added here -->
+                                          <tr ng-repeat = "row in filteredparams.items">
+                                              <td>{{row.paramName.value}}</td>       
+                                              <td>{{row.default.value}}</td>  
+                                              <td>{{row.minimos.value}}</td>  
+                                              <td>{{row.maximos.value}}</td>  
+                                              <td>{{row.datatype.value.slice(33)}}</td>  
+                                          </tr>
                                       </tbody>    
                                   </table>
                              </div>
@@ -151,8 +158,8 @@
                <h4>Experiment Summary</h4>
                <p>Region Bounds: <span ng-bind="experiment.coordinates"></span> </p>
                <p>Species: <span ng-bind="experiment.species"></span></p>
-               <p>Datasets:<span> 0 </span></p>
-               <p>Algorithm:<span> Not Selected </span></p>
+               <p>Datasets: <span> 0 </span></p>
+               <p>Algorithm URI: <span ng-bind="experiment.algorithm"></span></p>
                
            </div>
            
