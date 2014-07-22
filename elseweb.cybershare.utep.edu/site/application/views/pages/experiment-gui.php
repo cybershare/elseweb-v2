@@ -98,7 +98,6 @@
                                   <form>
                                        <div class="form-group">
                                            <select  ng-model="experiment.algorithm" ng-change="algorithmCrtl.populateParameter()" ng-click="algorithmCtrl.populateParameter()" name="selectAlgorithm" class="form-control blck-input">
-                                                <!-- <option>----------- please select -----------</option> -->  
                                                 <option ng-repeat="algorithm in algorithms" value="{{algorithm.algorithmURI.value}}">{{algorithm.algorithmName.value}}</option>  
                                            </select>
                                        </div>
@@ -116,7 +115,10 @@
                                       <tbody>
                                           <tr ng-repeat = "row in filteredparams.items">
                                               <td>{{row.paramName.value}}</td>       
-                                              <td>{{row.default.value}}</td>  
+                                              <td> 
+                                                  <input class="form-control blck-input" type="number" min="{{row.minimos.value}}" max="{{row.maximos.value}}"
+                                                         ng-model="row.default.value" placeholder="{{row.default.value}}"/>
+                                              </td>  
                                               <td>{{row.minimos.value}}</td>  
                                               <td>{{row.maximos.value}}</td>  
                                               <td>{{row.datatype.value.slice(33)}}</td>  
@@ -156,14 +158,26 @@
            
            <div class="col-md-4 gray-bg col-md-push-1">
                <h4>Experiment Summary</h4>
-               <p>Region Bounds: <span ng-bind="experiment.coordinates"></span> </p>
-               <p>Species: <span ng-bind="experiment.species"></span></p>
-               <p>Datasets: <span> 0 </span></p>
-               <p>Algorithm URI: <span ng-bind="experiment.algorithm"></span></p>
-               
+               <p><b>Region Bounds: </b><span ng-bind="experiment.coordinates"></span> </p>
+               <p><b>Species: </b><span ng-bind="experiment.species"></span></p>
+               <p><b>Datasets: </b><span></span></p>
+               <p><b>Algorithm: </b><span ng-bind="experiment.algorithm.slice(79)"></span></p>   
+               <div class="eq-len">
+                    <table id="algorithmParamsSummary" class="table table-striped">
+                            <thead>
+                                <th>Parameter</th>   
+                                <th>Value</th>   
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat = "row in filteredparams.items">
+                                    <td>{{row.paramName.value}}</td>       
+                                    <td>{{row.default.value}}</td>  
+                                </tr>
+                            </tbody>    
+                    </table>
+             </div>
            </div>
-           
-           
+ 
        </div>    
         
     </div>    

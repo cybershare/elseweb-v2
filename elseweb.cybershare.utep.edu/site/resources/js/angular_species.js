@@ -12,10 +12,13 @@
     var algorithmURI = "prefix%20modelling%3A%20%3Chttp%3A%2F%2Fontology.cybershare.utep.edu%2FELSEWeb%2Felseweb-modelling.owl%23%3E%0Aprefix%20parameters%3A%20%3Chttp%3A%2F%2Fontology.cybershare.utep.edu%2FELSEWeb%2Felseweb-lifemapper-parameters.owl%23%3E%0Aprefix%20lifemapper%3A%20%3Chttp%3A%2F%2Fontology.cybershare.utep.edu%2FELSEWeb%2Felseweb-lifemapper.owl%23%3E%0A%0Aselect%20distinct%20%3FalgorithmURI%20%3FalgorithmName%0A%0Afrom%20%3Chttp%3A%2F%2Fontology.cybershare.utep.edu%2FELSEWeb%2Flinked-data%2Flifemapper%2Fparameter-descriptions%2Fparameter-descriptions.owl%3E%0Awhere%0A%7B%0A%3FalgorithmURI%20a%20lifemapper%3ALifemapperAlgorithm.%0A%3FalgorithmURI%20modelling%3AhasAlgorithmName%20%3FalgorithmName.%0A%3Fparams%20lifemapper%3AdescribesBehaviorOf%20%3FalgorithmURI.%0A%3Fparams%20lifemapper%3AhasParameterDescription%20%3FparamDescription.%0A%0A%3FparamDescription%20modelling%3AhasParameterName%20%3FparamName.%0A%3FparamDescription%20lifemapper%3AhasDefaultValue%20%3Fdefault.%0Aoptional%7B%3FparamDescription%20lifemapper%3AhasLowerBoundInclusive%20%3Fmin.%7D%0Aoptional%7B%3FparamDescription%20lifemapper%3AhasUpperBoundInclusive%20%3Fmax.%7D%0A%7D&format=application%2Fjson";
     var parameterQuery = "prefix+modelling%3A+%3Chttp%3A%2F%2Fontology.cybershare.utep.edu%2FELSEWeb%2Felseweb-modelling.owl%23%3E%0D%0Aprefix+parameters%3A+%3Chttp%3A%2F%2Fontology.cybershare.utep.edu%2FELSEWeb%2Felseweb-lifemapper-parameters.owl%23%3E%0D%0Aprefix+lifemapper%3A+%3Chttp%3A%2F%2Fontology.cybershare.utep.edu%2FELSEWeb%2Felseweb-lifemapper.owl%23%3E%0D%0A%0D%0Aselect+distinct+%3FalgorithmURI+%3FalgorithmName+%3FparamName+%3Fdefault+%3Fminimos+%3Fmaximos+%28datatype%28%3Fdefault%29+as+%3Fdatatype%29%0D%0A%0D%0Afrom+%3Chttp%3A%2F%2Fontology.cybershare.utep.edu%2FELSEWeb%2Flinked-data%2Flifemapper%2Fparameter-descriptions%2Fparameter-descriptions.owl%3E%0D%0Awhere%0D%0A%7B%0D%0A%3FalgorithmURI+a+lifemapper%3ALifemapperAlgorithm.%0D%0A%3FalgorithmURI+modelling%3AhasAlgorithmName+%3FalgorithmName.%0D%0A%3Fparams+lifemapper%3AdescribesBehaviorOf+%3FalgorithmURI.%0D%0A%3Fparams+lifemapper%3AhasParameterDescription+%3FparamDescription.%0D%0A%0D%0A%3FparamDescription+modelling%3AhasParameterName+%3FparamName.%0D%0A%3FparamDescription+lifemapper%3AhasDefaultValue+%3Fdefault.%0D%0Aoptional%7B%3FparamDescription+lifemapper%3AhasLowerBoundInclusive+%3Fminimos.%7D%0D%0Aoptional%7B%3FparamDescription+lifemapper%3AhasUpperBoundInclusive+%3Fmaximos.%7D%0D%0A%7D%0D%0A&format=application%2Fjson";
    
-    app.controller("PanelController", ['$scope', function($scope){
+    app.controller("PanelController", ['$scope', '$rootScope', function($scope, $rootScope){
         this.tab = 1;
-        $scope.experiment = {coordinates: "0,0,0,0", species: "Not Selected", algorithm: "Not Selected"};
-                
+        $scope.experiment = {coordinates: "", species: "", algorithm: ""};
+        $rootScope.filteredparams = [];  
+        $scope.algorithms = [];
+        $scope.parameters = [];
+            
         this.selectTab = function(setTab){
             this.tab = setTab;
         };
@@ -35,24 +38,23 @@
         
     }]);
 
-     app.controller('AlgorithmController', ['$http' , '$scope', function($http, $scope){
-        $scope.filteredparams = [];    
+     app.controller('AlgorithmController', ['$http', '$scope', '$rootScope', function($http, $scope, $rootScope){
+            
              
         $http.jsonp(url+algorithmURI+callback).success(function(data){
-            $scope.algorithms = [];
             $scope.algorithms = data.results.bindings;
         });
         
 
         $http.jsonp(url+parameterQuery+callback).success(function(data){
-            $scope.parameters = [];
             $scope.parameters = data.results.bindings;
         });
         
         //Perform filtering of parameter by algorithm URI and append to table.
         this.populateParameter = function(){
-            $scope.filteredparams = JSLINQ($scope.parameters).
+            $rootScope.filteredparams = JSLINQ($scope.parameters).
                             Where(function(item){return item.algorithmURI.value == $scope.experiment.algorithm;});
+            $rootScope.filteredparams2 = $scope.filteredparams;
         };
 
         
