@@ -1,6 +1,7 @@
     <!-- Page javascript files -->
     <script src="<?php echo base_url(JS."JSLINQ.js");?>"></script>
     <script src="<?php echo base_url(JS."angular.min.js");?>"></script>
+    <script src="<?php echo base_url(JS."ui-utils.min.js");?>"></script>
     <script src="<?php echo base_url(JS."ui-bootstrap-0.11.0.min.js");?>"></script>
     <script src="<?php echo base_url(JS."lodash.underscore.min.js");?>"></script>
     <script src="<?php echo base_url(JS."angular_species.js");?>"></script>
@@ -67,7 +68,7 @@
                          <div class="col-md-12 gray-bg">
                              <h4>Data</h4>
                              <p class="">Select up to 10 data sets</p>
-                             <div><button ng-click="dataCrtl.addDataSet()" type="button" class="btn btn-purchase" >+ Add data set</button></div>
+                             <div><button ng-click="dataCrtl.addDataSetBeta()" type="button" class="btn btn-purchase" >+ Add data set</button></div>
                              <div class="eq-len">
                                   <table id="dataInputs" class="table table-striped">
                                       <thead>
@@ -78,7 +79,29 @@
                                           <th>Source</th>
                                       </thead>
                                       <tbody>
-                                          <!-- Dynamic rows will be added here -->
+                                          <tr ng-repeat = "dataset in datasets" >
+                                              <td><input ng-model="dataset.start" class="form-control blck-input datepicker" type="text" placeholder="{{dataset.start}}" /></td>
+                                              <td><input ng-model="dataset.end" class="form-control blck-input datepicker" type="text" placeholder="{{dataset.end}}" /></td>
+                                              <td>
+                                                  <select ng-options="e.entity.value.slice(59) for e in entities | unique:'entity.value'" ng-model="dataset.entity" class="form-control blck-input selEnt">
+                                                      <option style="display:none" value="">select...</option>
+                                                  </select>
+                                              </td>
+                                              <td>
+                                                  <select ng-options="e.char.value.slice(59) for e in entities" ng-model="dataset.characteristic" class="form-control blck-input selEnt">
+                                                      <option style="display:none" value="">select...</option>
+                                                  </select>                                                  
+                                              </td>
+                                              <td>
+                                                  <select ng-options="e.source.value.slice(59) for e in entities" ng-model="dataset.source" class="form-control blck-input selEnt">
+                                                      <option style="display:none" value="">select...</option>
+                                                  </select>                                                                                   
+                                              </td>
+                                              <td style="text-align:center; vertical-align: middle;">
+                                                  <button type="button" class="btn btn-purchase btn-xs"><span ng-click="dataCrtl.deleteDataset(dataset)" class="glyphicon glyphicon-remove"></span></button>
+                                              </td>
+                                              
+                                          </tr>
                                       </tbody>    
                                   </table>
                              </div>
