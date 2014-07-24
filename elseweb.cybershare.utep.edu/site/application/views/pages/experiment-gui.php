@@ -5,10 +5,6 @@
     <script src="<?php echo base_url(JS."ui-bootstrap-0.11.0.min.js");?>"></script>
     <script src="<?php echo base_url(JS."lodash.underscore.min.js");?>"></script>
     <script src="<?php echo base_url(JS."angular_species.js");?>"></script>
-    <!-- <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&AMP;sensor=false"></script> -->
-    <!--  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCotZjhwqwQ-4UjBvZHJNrQK0Yew5M2sOQ&sensor=true"></script> -->
-    <!-- <script src="<?php echo base_url(JS."angular-google-maps.min.js");?>"></script> -->
-   
 
    <!--container start-->
    <div class="container" ng-app="elsewebGUI">
@@ -54,8 +50,8 @@
                              <p>Select species</p>
                              <form ng-controller="SpeciesController as speciesCtrl">
                                  <div class="form-group">
-                                     <select ng-model="experiment.species" name="selectSpecimen" class="form-control blck-input">
-                                         <option ng-repeat="specimen in species" value="{{specimen.name.value}}">{{specimen.name.value}}</option>  
+                                     <select ng-options="s.name.value as s.name.value for s in species" ng-model="experiment.species" class="form-control blck-input">
+                                         <option style="display:none" value="">select...</option> 
                                      </select>
                                  </div>
                              </form>                  
@@ -83,17 +79,17 @@
                                               <td><input ng-model="dataset.start" class="form-control blck-input datepicker" type="text" placeholder="{{dataset.start}}" /></td>
                                               <td><input ng-model="dataset.end" class="form-control blck-input datepicker" type="text" placeholder="{{dataset.end}}" /></td>
                                               <td>
-                                                  <select ng-options="e.entity.value.slice(59) for e in entities | unique:'entity.value'" ng-model="dataset.entity" class="form-control blck-input selEnt">
+                                                  <select ng-change="dataCrtl.filterCharacteristics(dataset)" ng-options="o.entity.value as o.entity.value.slice(59)  for o in datasetOptions | unique:'entity.value'" ng-model="dataset.entity" class="form-control blck-input selEnt">
                                                       <option style="display:none" value="">select...</option>
                                                   </select>
                                               </td>
                                               <td>
-                                                  <select ng-options="e.char.value.slice(59) for e in entities" ng-model="dataset.characteristic" class="form-control blck-input selEnt">
+                                                  <select ng-change="dataCrtl.filterSources(dataset)" ng-options="o.char.value as o.char.value.slice(59) for o in filteredChars[$index].items" ng-model="dataset.characteristic" class="form-control blck-input selEnt">
                                                       <option style="display:none" value="">select...</option>
                                                   </select>                                                  
                                               </td>
                                               <td>
-                                                  <select ng-options="e.source.value.slice(59) for e in entities" ng-model="dataset.source" class="form-control blck-input selEnt">
+                                                  <select ng-options="o.source.value.slice as o.source.value.slice(59) for o in filteredSources[$index].items" ng-model="dataset.source" class="form-control blck-input selEnt">
                                                       <option style="display:none" value="">select...</option>
                                                   </select>                                                                                   
                                               </td>
@@ -120,8 +116,8 @@
                              <div class="col-md-10">
                                   <form>
                                        <div class="form-group">
-                                           <select  ng-model="experiment.algorithm" ng-change="algorithmCrtl.populateParameter()" ng-click="algorithmCtrl.populateParameter()" name="selectAlgorithm" class="form-control blck-input">
-                                                <option ng-repeat="algorithm in algorithms" value="{{algorithm.algorithmURI.value}}">{{algorithm.algorithmName.value}}</option>  
+                                           <select  ng-options="a.algorithmURI.value as a.algorithmName.value for a in algorithms" ng-model="experiment.algorithm" ng-change="algorithmCrtl.populateParameter()" name="selectAlgorithm" class="form-control blck-input">
+                                               <option style="display:none" value="">select...</option> 
                                            </select>
                                        </div>
                                    </form> 

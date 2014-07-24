@@ -10,7 +10,7 @@ var url = "http://visko.cybershare.utep.edu/sparql?default-graph-uri=&query=";
 var sw, ne, nw, se;
 var userBounds, boundsArray;
 
-var entURL,charURL, sourceURL;
+var entURL;
 
 
       //google map
@@ -75,31 +75,6 @@ var entURL,charURL, sourceURL;
 					+ north[0] + 
 					"%29%0D%0A%3Fdataset+elseweb-data%3AhasDataBand+%3Fband.%0D%0A%3Fband+elseweb-data%3ArepresentsEntity+%3Fentity.%0D%0A%0D%0A%7D%0D%0A&format=application%2Fjson&timeout=0&debug=on&callback?";
 			
-		//Define charURL and sourceURL here to use coordinate variables 
-		//TODO: Check variable scope
-		charURL = url + "prefix+elseweb-data%3A+%3Chttp%3A%2F%2Fontology.cybershare.utep.edu%2FELSEWeb%2Felseweb-data.owl%23%3E%0D%0Aprefix+elseweb-edac%3A+%3Chttp%3A%2F%2Fontology.cybershare.utep.edu%2FELSEWeb%2Felseweb-edac.owl%23%3E%0D%0Aselect+distinct+%3Fchar%0D%0Afrom+%3Chttp%3A%2F%2Fontology.cybershare.utep.edu%2FELSEWeb%2Flinked-data%2Fedac%2Fservices%2Fwcs-services.owl%3E%0D%0Awhere%0D%0A%7B%0D%0A%3Fdataset+elseweb-data%3AcoversRegion+%3Fregion.%0D%0A%3Fregion+elseweb-data%3AhasLeftLongitude+%3Fllon.%0D%0A%3Fregion+elseweb-data%3AhasRightLongitude+%3Frlon.%0D%0A%3Fregion+elseweb-data%3AhasLowerLatitude+%3Fllat.%0D%0A%3Fregion+elseweb-data%3AhasUpperLatitude+%3Fulat.%0D%0A%0D%0Afilter%28%3Fllon+%3C%3D+"
-					+ west[0] +
-					"%29%0D%0Afilter%28%3Frlon+%3E%3D+"
-					+ east[0] +
-					"%29%0D%0Afilter%28%3Fllat+%3C%3D+"
-					+ south[0] +
-					"%29%0D%0Afilter%28%3Fulat+%3E%3D+"
-					+ north[0] +
-					"%29%0D%0A%0D%0A%3Fdataset+elseweb-data%3AhasDataBand+%3Fband.%0D%0A%3Fband+elseweb-data%3AencodingOfCharacteristic+%3Fchar%0D%0A%7D%0D%0A&format=application%2Fjson&timeout=0&debug=on&callback?";
-		
-		sourceURL = url + "define+input%3Ainference+%22http%3A%2F%2Fontology.cybershare.utep.edu%2FELSEWeb%2Fmappings%2Felseweb-mappings.owl%22%0D%0Aprefix+elseweb-edac%3A+%3Chttp%3A%2F%2Fontology.cybershare.utep.edu%2FELSEWeb%2Felseweb-edac.owl%23%3E%0D%0Aprefix+elseweb-data%3A+%3Chttp%3A%2F%2Fontology.cybershare.utep.edu%2FELSEWeb%2Felseweb-data.owl%23%3E%0D%0Aprefix+elseweb-edac%3A+%3Chttp%3A%2F%2Fontology.cybershare.utep.edu%2FELSEWeb%2Felseweb-edac.owl%23%3E%0D%0Aprefix+provo%3A+%3Chttp%3A%2F%2Fwww.w3.org%2Fns%2Fprov%23%3E%0D%0Aselect+distinct+%3Fsource%0D%0Afrom+%3Chttp%3A%2F%2Fontology.cybershare.utep.edu%2FELSEWeb%2Flinked-data%2Fedac%2Fservices%2Fwcs-services.owl%3E%0D%0Awhere%0D%0A%7B%0D%0A%3Fdataset+elseweb-data%3AcoversRegion+%3Fregion.%0D%0A%3Fregion+elseweb-data%3AhasLeftLongitude+%3Fllon.%0D%0A%3Fregion+elseweb-data%3AhasRightLongitude+%3Frlon.%0D%0A%3Fregion+elseweb-data%3AhasLowerLatitude+%3Fllat.%0D%0A%3Fregion+elseweb-data%3AhasUpperLatitude+%3Fulat.%0D%0A%0D%0Afilter%28%3Fllon+%3C%3D+"
-					+ west[0] +
-					"%29%0D%0Afilter%28%3Frlon+%3E%3D+"
-					+ east[0] +
-					"%29%0D%0Afilter%28%3Fllat+%3C%3D+"
-					+ south[0] +
-					"%29%0D%0Afilter%28%3Fulat+%3E%3D+"
-					+ north[0] +
-					"%29%0D%0A%0D%0A%3Fdataset+elseweb-data%3AhasDataBand+%3Fband.%0D%0A%3Fband+provo%3AwasGeneratedBy+%3Factivity.%0D%0A%3Factivity+provo%3AwasAssociatedWith+%3Fsource%0D%0A%7D%0D%0A&format=application%2Fjson&timeout=0&debug=on&callback?";
-	
-			
-		// Set the info window's content and position.
-		// Change textbox value 
 		document.getElementById("boundsText").value = textboxString;
 		
 		//Request to check if there is any data in the selected region using the entity query URL and display infoWindow in the map.
