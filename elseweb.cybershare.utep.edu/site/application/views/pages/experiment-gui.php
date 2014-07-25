@@ -4,7 +4,7 @@
     <script src="<?php echo base_url(JS."ui-utils.min.js");?>"></script>
     <script src="<?php echo base_url(JS."ui-bootstrap-0.11.0.min.js");?>"></script>
     <script src="<?php echo base_url(JS."lodash.underscore.min.js");?>"></script>
-    <script src="<?php echo base_url(JS."angular_species.js");?>"></script>
+    <script src="<?php echo base_url(JS."experiment-gui.js");?>"></script>
 
    <!--container start-->
    <div class="container" ng-app="elsewebGUI">
@@ -20,13 +20,13 @@
        <div class="row" ng-controller="PanelController as panel">
         
            <div class="col-md-7 gray-bg">
-                <div class="tab-panel" ng-show="panel.isSelected(1)"> 
+                <div class="tab-panel" ng-show="panel.isSelected(1)" ng-controller="RegionController as regionCtrl"> 
                      <div class="row">
                           <div class="col-md-12 gray-bg" style="padding-bottom: 15px; border-radius: 3px;">
                               <h4>Region</h4>
                               <p>Enter coordinates or drag point in map to set bounding box for the experiment.
                                  Coordinates will update on mouse out event on rectangle layer.</p>
-                              <input ng-model="experiment.coordinates" disabled="true" id="boundsText" class="form-control" placeholder= "e.g. 50, -65.123, 23, -126 (N, E, S, W) (Press the 'TAB' key)" type="text"/>
+                              <input ng-model="experiment.coordinates" disabled="true" id="boundsText" class="form-control" placeholder= "e.g. 50, -65.123, 23, -126 (N, E, S, W)" type="text"/>
                               <div class="no-data alert alert-danger">No data available. Please Change coordinates</div>
                               <div class="data-available alert alert-success">Data Available</div>
                           </div>
@@ -64,7 +64,7 @@
                          <div class="col-md-12 gray-bg">
                              <h4>Data</h4>
                              <p class="">Select up to 10 data sets</p>
-                             <div><button ng-click="dataCrtl.addDataSetBeta()" type="button" class="btn btn-purchase" >+ Add data set</button></div>
+                             <div><button ng-click="dataCrtl.addDataSet()" type="button" class="btn btn-purchase" >+ Add data set</button></div>
                              <div class="eq-len">
                                   <table id="dataInputs" class="table table-striped">
                                       <thead>

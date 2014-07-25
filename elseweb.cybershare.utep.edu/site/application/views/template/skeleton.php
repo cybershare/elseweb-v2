@@ -70,7 +70,8 @@
 
    <!-- <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&AMP;sensor=false"></script> -->
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCotZjhwqwQ-4UjBvZHJNrQK0Yew5M2sOQ&sensor=true"></script> 
-  <script src="<?php echo base_url(JS."experimentgui.js");?>"></script>
+  <!-- <script src="<?php echo base_url(JS."experimentgui.js");?>"></script> -->
+  <script src="<?php echo base_url(JS."google-region.js");?>"></script> 
     
 
 
