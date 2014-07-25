@@ -11,8 +11,9 @@
      * ui.utils : direct model filtering from views. E.G. unique
      * ui.bootstrap: bootstrap widgets
      * region-ui: google map creation and handlers
+     * spec-factory: Experiment specification assembly factory
      */
-    var app = angular.module('elsewebGUI', ['ui.utils', 'ui.bootstrap', 'region-ui']);
+    var app = angular.module('elsewebGUI', ['ui.utils', 'ui.bootstrap', 'region-ui', 'spec-factory']);
     
     /* Global variables */
     var url = "http://visko.cybershare.utep.edu/sparql?default-graph-uri=&query=";    

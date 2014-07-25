@@ -2,6 +2,7 @@
     <script src="<?php echo base_url(JS."JSLINQ.js");?>"></script>
     <script src="<?php echo base_url(JS."angular.min.js");?>"></script>
     <script src="<?php echo base_url(JS."ui-utils.min.js");?>"></script>
+    <script src="<?php echo base_url(JS."experiment-specification.js");?>"></script>
     <script src="<?php echo base_url(JS."ui-bootstrap-0.11.0.min.js");?>"></script>
     <script src="<?php echo base_url(JS."lodash.underscore.min.js");?>"></script>
     <script src="<?php echo base_url(JS."experiment-gui.js");?>"></script>
@@ -150,7 +151,7 @@
                 </div>  
             
 
-                <div class="row experiment-row">
+                <div class="row experiment-row" ng-controller="OcurrenceController as OcurrenceCtrl">
                     <div class="col-md-12 gray-bg" style="margin-bottom: 10px">
                         <section class="tab-menu">
                             <ul class="nav nav-pills">
@@ -167,7 +168,7 @@
                                     <a href ng-click="panel.selectTab(4)">Algorithm</a>
                                 </li>
                                 <li ng-class="{ active: panel.isSelected(5) }">
-                                    <a href ng-click="panel.selectTab(5)">Submit</a>
+                                    <a href ng-click="panel.selectTab(5); OcurrenceCtrl.getOcurrence()">Submit</a>
                                 </li>
                             </ul>
                         </section>
