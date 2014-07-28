@@ -13,7 +13,7 @@
     var url_visk = "http://visko.cybershare.utep.edu/sparql?default-graph-uri=&query=";    
     var callback_visk = "&callback=JSON_CALLBACK";
     
-    app.controller('OcurrenceController', ['$http' , '$scope', function($http, $scope){
+    app.controller('SubmissionController', ['$http' , '$scope', function($http, $scope){
         
         this.getOcurrence = function (){
             specimen = "\""+$scope.experiment.species+"\"^^<http://www.w3.org/2001/XMLSchema"
@@ -21,30 +21,36 @@
             $http.jsonp(url_visk+ocurrenceQuery+callback_visk).success(function(data){
                 $scope.ocurrence = [];
                 $scope.ocurrence = data.results.bindings;
-                alert(JSON.stringify($scope.ocurrence));
+                //alert(JSON.stringify($scope.ocurrence));
             });
-           
         }; 
+        
+        this.getDatasets = function () {
+            for (dataset in $scope.datasets){
+                var start = $scope.datasets[dataset].start;
+                var end = $scope.datasets[dataset].end;
+                var entity = $scope.datasets[dataset].entity;
+                var characteristic = $scope.datasets[dataset].entity;
+                datasetQuery = "";
+                $http.jsonp(url_visk+datasetQuery+callback_visk).success(function(data){
+                    $scope.datasetURI = [];
+                    $scope.datasetURI  = data.results.bindings;
+                    //alert(JSON.stringify($scope.ocurrence));
+                });
+                
+            }
+            //alert(JSON.stringify($scope.datasets));   
+        };
             
     }]);
 
-    app.controller('DataController', ['$http' , '$scope', function($http, $scope){
-            
-        
-            
-    }]);
 
     app.controller('AssemblyController', ['$http' , '$scope', function($http, $scope){
-            
+        $scope.eSpecification = [];
         
             
     }]);
 
-    app.controller('SubmissionController', ['$http' , '$scope', function($http, $scope){
-            
-        
-            
-    }]);
 
 })(); //app end
 

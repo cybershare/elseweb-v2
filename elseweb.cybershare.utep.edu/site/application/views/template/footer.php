@@ -5,9 +5,9 @@
                 <div class="col-lg-3 col-sm-3">
                     <h1>contact info</h1>
                     <address>
-                        <p><a href="http://trust.utep.edu/members/nick">Nicholas Del Rio</a></p>
+                        <p><a href="">Dr. Deana D Pennington</a></p>
                         <p>University of Texas at El Paso CYBER-ShARE</p>
-                        <p>Email : <a href="javascript:;">ndel2@utep.edu</a></p>
+                        <p>Email : <a href="javascript:;">ddpennington@utep.edu</a></p>
                     </address>
                 </div>
 <!--            <div class="col-lg-5 col-sm-5">

@@ -6,6 +6,7 @@
     <script src="<?php echo base_url(JS."ui-bootstrap-0.11.0.min.js");?>"></script>
     <script src="<?php echo base_url(JS."lodash.underscore.min.js");?>"></script>
     <script src="<?php echo base_url(JS."experiment-gui.js");?>"></script>
+    <script src="<?php echo base_url(JS."endpoint.js");?>"></script>
 
    <!--container start-->
    <div class="container" ng-app="elsewebGUI">
@@ -77,8 +78,8 @@
                                       </thead>
                                       <tbody>
                                           <tr ng-repeat = "dataset in datasets" >
-                                              <td><input ng-model="dataset.start" class="form-control blck-input datepicker" type="text" placeholder="{{dataset.start}}" /></td>
-                                              <td><input ng-model="dataset.end" class="form-control blck-input datepicker" type="text" placeholder="{{dataset.end}}" /></td>
+                                              <td><input ng-model="dataset.start" class="form-control blck-input datepicker" type="text" /></td>
+                                              <td><input ng-model="dataset.end" class="form-control blck-input datepicker" type="text" /></td>
                                               <td>
                                                   <select ng-change="dataCrtl.filterCharacteristics(dataset)" ng-options="o.entity.value as o.entity.value.slice(59)  for o in datasetOptions | unique:'entity.value'" ng-model="dataset.entity" class="form-control blck-input selEnt">
                                                       <option style="display:none" value="">select...</option>
@@ -90,7 +91,7 @@
                                                   </select>                                                  
                                               </td>
                                               <td>
-                                                  <select ng-options="o.source.value.slice as o.source.value.slice(59) for o in filteredSources[$index].items" ng-model="dataset.source" class="form-control blck-input selEnt">
+                                                  <select ng-options="o.source.value as o.source.value.slice(59) for o in filteredSources[$index].items" ng-model="dataset.source" class="form-control blck-input selEnt">
                                                       <option style="display:none" value="">select...</option>
                                                   </select>                                                                                   
                                               </td>
@@ -149,9 +150,21 @@
                          </div>
                      </div>
                 </div>  
+               
+               <div class="tab-panel" ng-show="panel.isSelected(5)">
+                    <div class="row experiment-row">
+                        <div class="col-md-12 gray-bg">
+                            <h4>Experiment Specification</h4>
+                                <div class="form-group">
+                                    <textarea id="experiment" name="experiment" rows="22" style="width: 100%"></textarea>
+                                </div>
+                         </form>                        
+                        </div>
+                    </div>    
+               </div>
             
 
-                <div class="row experiment-row" ng-controller="OcurrenceController as OcurrenceCtrl">
+                <div class="row experiment-row" ng-controller="SubmissionController as SubmissionCtrl">
                     <div class="col-md-12 gray-bg" style="margin-bottom: 10px">
                         <section class="tab-menu">
                             <ul class="nav nav-pills">
@@ -168,7 +181,10 @@
                                     <a href ng-click="panel.selectTab(4)">Algorithm</a>
                                 </li>
                                 <li ng-class="{ active: panel.isSelected(5) }">
-                                    <a href ng-click="panel.selectTab(5); OcurrenceCtrl.getOcurrence()">Submit</a>
+                                    <a href ng-click="panel.selectTab(5); Submission.getOcurrence(); Submission.getDatasets()">Assemble</a>
+                                </li>
+                                <li ng-class="{ active: panel.isSelected(6) }">
+                                    <a href ng-click="panel.selectTab(6); ">Submit</a>
                                 </li>
                             </ul>
                         </section>
@@ -181,6 +197,26 @@
                <p><b>Region Bounds: </b><span ng-bind="experiment.coordinates"></span> </p>
                <p><b>Species: </b><span ng-bind="experiment.species"></span></p>
                <p><b>Datasets: </b><span></span></p>
+               <div class="eq-len">
+                    <table id="datasetParams" class="table table-striped">
+                            <thead>
+                                <th>Start</th>   
+                                <th>End</th>  
+                                <th>Entity</th>
+                                <th>Char</th>
+                                <th>Source</th>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat = "row in datasets">
+                                    <td>{{row.start}}</td>       
+                                    <td>{{row.end}}</td>  
+                                    <td>{{row.entity.slice(59)}}</td>
+                                    <td>{{row.characteristic.slice(59)}}</td>
+                                    <td>{{row.source.slice(59)}}</td>
+                                </tr>
+                            </tbody>    
+                    </table>
+               </div>
                <p><b>Algorithm: </b><span ng-bind="experiment.algorithm.slice(79)"></span></p>   
                <div class="eq-len">
                     <table id="algorithmParamsSummary" class="table table-striped">

@@ -14,15 +14,17 @@
      * spec-factory: Experiment specification assembly factory
      */
     var app = angular.module('elsewebGUI', ['ui.utils', 'ui.bootstrap', 'region-ui', 'spec-factory']);
-    
+        
     /* Global variables */
     var url = "http://visko.cybershare.utep.edu/sparql?default-graph-uri=&query=";    
     var callback = "&callback=JSON_CALLBACK";
    
    /* PanelController handles show and hide of each tab */
     app.controller("PanelController", ['$scope', '$rootScope', function($scope, $rootScope){
+   
         this.tab = 1; //First tab to show (Region)
         $scope.experiment = {coordinates: "", species: "", algorithm: ""}; //experiment data capture
+        $scope.datasets = [];
         $rootScope.filteredparams = []; //experiment algorithm parameters   
         
         //Tab handlers    
@@ -76,10 +78,20 @@
     }]);
 
     app.controller('DataController', ['$http' , '$scope', '$timeout', function($http, $scope, timeout){
+                       
         $scope.datasetOptions = [];
-        $scope.datasets = [];
         $scope.filteredChars = [];
         $scope.filteredSources = [];
+        
+        $.datepicker.setDefaults({
+            // When a date is selected from the picker
+            onSelect: function(newValue) {
+                if (window.angular && angular.element)
+                    // Update the angular model
+                    angular.element(this).controller("ngModel").$setViewValue(newValue);
+            }
+        });            
+        
         
         /* Handlers for dataset table */
         this.addDataSet = function () {
@@ -95,12 +107,13 @@
             
             var addPicker = function () {
                  $('.datepicker').datepicker({
+                        dateFormat : 'yy-mm-dd',
                         changeMonth: true,
                         changeYear: true,
                         yearRange: '1900:2099'
                 });                               
             };
-            timeout(addPicker, 0); //add datepicker after angular rendering
+            timeout(addPicker, 0); //add datepicker after angular rendering 
         };
         
         this.deleteDataset = function (dataset){

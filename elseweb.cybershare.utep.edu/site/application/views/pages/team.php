@@ -49,20 +49,20 @@
 
             <div class="col-lg-4">
                 <div class="person text-center">
-                    <img src="<?php echo base_url(IMAGES."team/anonymous.png");?>" alt="image">
+                    <img src="<?php echo base_url(IMAGES."team/nvillanueva.jpg");?>" alt="image">
                 </div>
                 <div class="person-info text-center">
                     <h4>
-                        <a href="javascript:;">Soren Scott</a>
+                        <a href="javascript:;">Natalia Villanueva</a>
                     </h4>
-                    <p class="text-muted">EDAC Developer</p>
+                    <p class="text-muted">  - </p>
                     <div class="team-social-link">
-                        <a href="http://www.linkedin.com/in/sorenscottgis"><i class="icon-linkedin"></i></a>
+                        
                     </div>
                     <div class="content">
-                        <i>xsscott@edac.unm.edu</i>
+                        <i>nvillanuevarosales@utep.edu</i>
                     </div>
-                    <p>GIS, Web Services</p>
+                    <p>Semantic Web</p>
                 </div>
             </div>
 
@@ -97,7 +97,7 @@
                     <h4>
                         <a href="javascript:;">Luis Garnica</a>
                     </h4>
-                    <p class="text-muted">ELSEWeb Database Developer</p>
+                    <p class="text-muted">ELSEWeb Developer</p>
                     <div class="team-social-link">
                         <a href="https://www.linkedin.com/pub/luis-garnica/38/26/853"><i class="icon-linkedin"></i></a>
                     </div>
@@ -108,6 +108,27 @@
                     <p>Web Developer, Computer Engineer</p>
                 </div>
             </div>
+            
+            <div class="col-lg-4">
+                <div class="person text-center">
+                    <img src="<?php echo base_url(IMAGES."team/anonymous.png");?>" alt="image">
+                </div>
+                <div class="person-info text-center">
+                    <h4>
+                        <a href="javascript:;">Soren Scott</a>
+                    </h4>
+                    <p class="text-muted">EDAC Developer</p>
+                    <div class="team-social-link">
+                        <a href="http://www.linkedin.com/in/sorenscottgis"><i class="icon-linkedin"></i></a>
+                    </div>
+                    <div class="content">
+                        <i>xsscott@edac.unm.edu</i>
+                    </div>
+                    <p>GIS, Web Services</p>
+                </div>
+            </div>
+            
+            
         </div>
     </div>
     <!--container end-->
