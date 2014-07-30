@@ -30,8 +30,8 @@
                          echo "<td>".$row['Eid']."</td>";
                          echo "<td>".$row['Etimestamp']."</td>";
                          echo "<td style='text-align:center;'>".$row['Estatus']."</td>";
-                         echo "<td><a href='".$row['EresultURL']."'>Result URL</a></td>";
-                         echo "<td><a href='".$row['EprovinenceID']."'>Provinence URI</a></td>";
+                         echo "<td><a href='".$row['EresultURL']."' target='_blank'>Result URL</a></td>";
+                         echo "<td><a href='".$row['EprovinenceID']."' target='_blank'>Provinence URI</a></td>";
                     ?>
                          <td style='text-align:center;'><button type='button' class='btn btn-purchase btn-xs' onClick='experimentDetails("history", "<?php echo $row['Eid']?>")'><span class='glyphicon glyphicon-align-justify'></span></button></td>
                     <?php

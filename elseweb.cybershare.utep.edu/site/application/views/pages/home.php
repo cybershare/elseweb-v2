@@ -17,7 +17,7 @@
             <div class="row">
                 <div class="col-lg-6 col-sm-6 text-center">
                   
-                    <img width="500" src="<?php echo base_url(IMAGES."banner/chihuahuan-desert-spread.png");?>" alt="text img">
+                    <!-- <img width="500" src="<?php echo base_url(IMAGES."banner/chihuahuan-desert-spread.png");?>" alt="text img"> -->
                 </div>
                 <div class="col-lg-6 col-sm-6">
                     <h4>Where have all the grasslands gone?</h4>

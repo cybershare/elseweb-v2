@@ -9,7 +9,6 @@
                 </div>
             </div>
             <div class="col-lg-6 col-sm-6">
-                <h3>This component is undergoing a major overhaul and is currently not available.</h3>
                 <div class="content">
                     <h3 class="title">Option 1: Experiment Graphical User Interface</h3>
                     <p>The primary entry point to the ELSEWeb system is through the ELSEWeb graphical user interface. Through the interface, users can specify an experiment specification in terms of:</p>

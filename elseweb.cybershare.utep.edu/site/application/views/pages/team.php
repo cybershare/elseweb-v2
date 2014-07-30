@@ -55,7 +55,7 @@
                     <h4>
                         <a href="javascript:;">Natalia Villanueva</a>
                     </h4>
-                    <p class="text-muted">  - </p>
+                    <p class="text-muted">  Semantic Web Consultant </p>
                     <div class="team-social-link">
                         
                     </div>
