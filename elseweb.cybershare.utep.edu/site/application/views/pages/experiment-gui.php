@@ -181,10 +181,10 @@
                                     <a href ng-click="panel.selectTab(4)">Algorithm</a>
                                 </li>
                                 <li ng-class="{ active: panel.isSelected(5) }">
-                                    <a href ng-click="panel.selectTab(5); Submission.getOcurrence(); Submission.getDatasets()">Assemble</a>
+                                    <a href ng-click="panel.selectTab(5); SubmissionCtrl.getOcurrence(); SubmissionCtrl.getDatasets()">Assemble</a>
                                 </li>
                                 <li ng-class="{ active: panel.isSelected(6) }">
-                                    <a href ng-click="panel.selectTab(6); ">Submit</a>
+                                    <a href ng-click="panel.selectTab(6); SubmissionCtrl.assembleExperiment()">Submit</a>
                                 </li>
                             </ul>
                         </section>
