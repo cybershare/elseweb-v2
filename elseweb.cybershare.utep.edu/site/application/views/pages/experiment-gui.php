@@ -9,7 +9,7 @@
     <script src="<?php echo base_url(JS."endpoint.js");?>"></script>
 
    <!--container start-->
-   <div class="container" ng-app="elsewebGUI">
+   <div id="endpoint_container" class="container" ng-app="elsewebGUI">
 
         <div class="row">
             <!--feature start-->
@@ -151,7 +151,7 @@
                      </div>
                 </div>  
                
-               <div class="tab-panel" ng-show="panel.isSelected(5)">
+               <div class="tab-panel" ng-show="panel.isSelected(5) || panel.isSelected(6)">
                     <div class="row experiment-row">
                         <div class="col-md-12 gray-bg">
                             <h4>Experiment Specification</h4>
@@ -181,10 +181,10 @@
                                     <a href ng-click="panel.selectTab(4)">Algorithm</a>
                                 </li>
                                 <li ng-class="{ active: panel.isSelected(5) }">
-                                    <a href ng-click="panel.selectTab(5); SubmissionCtrl.getOcurrence(); SubmissionCtrl.getDatasets()">Assemble</a>
+                                    <a href ng-click="panel.selectTab(5); SubmissionCtrl.processAssemble()">Assemble</a>
                                 </li>
                                 <li ng-class="{ active: panel.isSelected(6) }">
-                                    <a href ng-click="panel.selectTab(6); SubmissionCtrl.assembleExperiment()">Submit</a>
+                                    <a href ng-click="panel.selectTab(6); SubmissionCtrl.submitExperiment('storeExperiment')">Submit</a>
                                 </li>
                             </ul>
                         </section>

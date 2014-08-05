@@ -118,7 +118,7 @@ function storeExperiment(experiment_json, base_url){
                     html += "</div>"; 
                     html += "<div class='row'>";
                     html += "<div class='text-center col-md-4 col-md-offset-2'>";
-                    html += "<a href='endpoint'><button type='button' class='btn btn-purchase'>New Experiment</button></a>";
+                    html += "<a href='experiments'><button type='button' class='btn btn-purchase'>New Experiment</button></a>";
                     html += "</div>";
                     html += "<div class='text-center col-md-4'>";
                     html += "<a href='history'><button type='button' class='btn btn-default'>Experiment History</button></a>";
@@ -127,7 +127,7 @@ function storeExperiment(experiment_json, base_url){
                     html += "</div>";
                     $('#endpoint_container').html( html );
                     $('html, body').animate({ scrollTop: $('#endpoint_container').offset().top }, 500);
-                    $('#endpoint_container').fadeIn()('slow');
+                    $('#endpoint_container').fadeIn('slow');
                     
                 }
                 else
