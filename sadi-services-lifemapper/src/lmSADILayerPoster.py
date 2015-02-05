@@ -22,7 +22,7 @@ class LayerPosterService(sadi.Service):
 
     def getOrganization(self):
         result = self.Organization()
-        result.add(RDFS.label,Literal("University of Texas at El Paso CYBER-ShARE"))
+        result.add(RDFS.label,Literal("University of Texas at El Paso CYBER-ShARE Center"))
         result.add(sadi.mygrid.authoritative, Literal(False))
         result.add(sadi.dc.creator, URIRef('mailto:nicholas.delrio@gmail.com'))
         return result
@@ -56,6 +56,7 @@ class LayerPosterService(sadi.Service):
     
 
     def process(self, input, output):
+	   
         username = "elseweb"
         password = "elseweb1"
         lmClient = LifemapperClient(username, password)
@@ -63,10 +64,12 @@ class LayerPosterService(sadi.Service):
         # Get file download URL of the TIFF layer
         manif = input.value(DATA.hasManifestation)
         tiffFileDownloadURL = manif.value(DATA.hasFileDownloadURL)
+		
 
         # Get the typeCode and layerUnits
         typeCode = input.value(LM.hasTypeCode)
         layerUnits = input.value(LM.hasLayerUnits)
+		
 
         # Get the JSON spec
         jsonSpecification = input.value(LM.hasJSONExperimentSpecificationURL)
