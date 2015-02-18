@@ -47,10 +47,15 @@ public class Builder {
 
 	
 	public void buildSpeciesOccurrenceLayer(int occurrenceSetID, int numberOfOccurrences, String speciesName){
-		//build species instance
+	       //build species instance
+               //System.out.println("Named received:");
+               // System.out.println(speciesName);
 		Species species = product.getSpecies(speciesName);
+                
 		species.setCanonicalName(speciesName);
-		
+                //System.out.println("After canonical name:");
+		//System.out.println(species.getCanonicalName());
+                
 		//build occurrence set
 		String occurrenceSetName =  "occurrence-set-" + occurrenceSetID;
 		SpeciesOccurrenceSet set = product.getSpeciesOccurrenceSet(occurrenceSetName);

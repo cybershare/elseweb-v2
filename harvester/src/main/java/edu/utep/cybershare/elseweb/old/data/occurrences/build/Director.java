@@ -8,7 +8,6 @@ import org.w3c.dom.NodeList;
 
 import edu.utep.cybershare.elseweb.old.data.occurrences.build.source.lifemapper.OccurrenceSetsXML;
 import java.io.UnsupportedEncodingException;
-import java.nio.charset.Charset;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -58,12 +57,9 @@ public class Director {
 		String numberOfOccurrences = occurrenceSetMetadata.getElementsByTagName("lm:queryCount").item(0).getTextContent().trim();
 
 		String speciesName = occurrenceSetMetadata.getElementsByTagName("lm:title").item(0).getTextContent().trim();
-                try {                
-                    speciesName = new String(speciesName.getBytes("ISO-8859-1"), "UTF-8");
-                } catch (UnsupportedEncodingException ex) {
-                    Logger.getLogger(Director.class.getName()).log(Level.SEVERE, null, ex);
-                }
-				
+                //speciesName = speciesName.replaceAll("’", "'");
+                
+		
 		try{
 			builder.buildSpeciesOccurrenceLayer(Integer.valueOf(occurrenceSetID), Integer.valueOf(numberOfOccurrences), speciesName);
 			builder.buildRegion(Double.valueOf(llon), Double.valueOf(rlon), Double.valueOf(llat), Double.valueOf(ulat));

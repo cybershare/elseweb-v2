@@ -68,6 +68,8 @@ public class OWLVisitor implements Visitor{
 		// TODO Auto-generated method stub
 		// TODO Auto-generated method stub
 		OWLIndividual ind = Individuals.getIndividual(species, bundle);
+                //System.out.println("Visiting species");
+                //System.out.println(ind.toString());
 		SpeciesAxioms axioms = new SpeciesAxioms(ind, species, bundle);
 		axioms.setAxioms();
 		bundle.addAxioms(axioms);
@@ -78,6 +80,8 @@ public class OWLVisitor implements Visitor{
 		// TODO Auto-generated method stub
 		// TODO Auto-generated method stub
 		OWLIndividual ind = Individuals.getIndividual(speciesOccurrence, bundle);
+                //System.out.println("Species Occurrences");
+                //System.out.println(ind.toString());
 		SpeciesOccurrenceSetAxioms axioms = new SpeciesOccurrenceSetAxioms(ind, speciesOccurrence, bundle);
 		axioms.setAxioms();
 		bundle.addAxioms(axioms);

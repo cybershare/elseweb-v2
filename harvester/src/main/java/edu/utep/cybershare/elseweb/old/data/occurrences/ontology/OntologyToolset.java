@@ -15,6 +15,8 @@ import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyManager;
 
 import edu.utep.cybershare.elseweb.old.data.occurrences.ontology.vocabulary.ELSEWebLifemapper;
+import java.lang.reflect.Field;
+import java.nio.charset.Charset;
 
 public class OntologyToolset {
 	private OWLDataFactory dataFactory;
@@ -84,8 +86,13 @@ public class OntologyToolset {
 		this.ontologyManager = ontologyManager;
 	}
 
-	public void dumpOntology(File aFile){
+	public void dumpOntology(File aFile) throws NoSuchFieldException, IllegalArgumentException, IllegalAccessException{
 		FileDocumentTarget target = new FileDocumentTarget(aFile);
+                System.setProperty("file.encoding","UTF-8");
+                Field charset = Charset.class.getDeclaredField("defaultCharset");
+                charset.setAccessible(true);
+                charset.set(null,null);
+                System.out.println(Charset.defaultCharset().toString());
 		try{ontologyManager.saveOntology(ontology, target);}
 		catch(Exception e){e.printStackTrace();}
 	}

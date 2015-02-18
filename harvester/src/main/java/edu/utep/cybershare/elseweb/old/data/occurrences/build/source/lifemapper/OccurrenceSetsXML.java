@@ -16,8 +16,8 @@ public class OccurrenceSetsXML {
 	
 	public Document getDOMObject(){
 		return doc;
-	}
-	
+	}	
+
 	private Document getDocument(){
 		DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder docBuilder;

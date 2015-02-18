@@ -16,6 +16,8 @@ import edu.utep.cybershare.elseweb.old.data.occurrences.model.SpeciesOccurrenceS
 import edu.utep.cybershare.elseweb.old.data.occurrences.ontology.OWLVisitor;
 import edu.utep.cybershare.elseweb.old.data.occurrences.ontology.OntologyToolset;
 import edu.utep.cybershare.elseweb.old.data.occurrences.util.FilePath;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Harvester {
 	
@@ -58,8 +60,15 @@ public class Harvester {
 		
 		for(SpeciesOccurrenceSet sets: product.getOccurrenceSets())
 			visitor.visit(sets);
-		
-		//dump file
-		bundle.dumpOntology(new File(FilePath.DUMP_PATH));
+                try {
+                    //dump file
+                    bundle.dumpOntology(new File(FilePath.DUMP_PATH));
+                } catch (NoSuchFieldException ex) {
+                    Logger.getLogger(Harvester.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IllegalArgumentException ex) {
+                    Logger.getLogger(Harvester.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IllegalAccessException ex) {
+                    Logger.getLogger(Harvester.class.getName()).log(Level.SEVERE, null, ex);
+                }
 	}
 }
