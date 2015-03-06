@@ -7,9 +7,6 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
 import edu.utep.cybershare.elseweb.old.data.occurrences.build.source.lifemapper.OccurrenceSetsXML;
-import java.io.UnsupportedEncodingException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class Director {
 	
