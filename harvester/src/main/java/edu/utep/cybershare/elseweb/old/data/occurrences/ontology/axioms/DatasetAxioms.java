@@ -42,8 +42,8 @@ public class DatasetAxioms extends Axioms {
 		OWLIndividual layerIndividual = null;
 		for(Layer layer : dataset.getLayers())
 			layerIndividual = Individuals.getIndividual(layer, bundle);
-			OWLAxiom axiom = bundle.getDataFactory().getOWLObjectPropertyAssertionAxiom(vocabulary_data.getObjectProperty_hasLayer(), individual, layerIndividual);
-			add(axiom);
+		OWLAxiom axiom = bundle.getDataFactory().getOWLObjectPropertyAssertionAxiom(vocabulary_data.getObjectProperty_hasLayer(), individual, layerIndividual);
+		add(axiom);
 	}
 	
 	private void addManifestation(){

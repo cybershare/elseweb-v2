@@ -1,7 +1,6 @@
 package edu.utep.cybershare.elseweb.old.data.occurrences.util;
 
 import java.net.URI;
-import java.net.URLEncoder;
 import java.security.MessageDigest;
 import java.util.Formatter;
 import java.util.List;
