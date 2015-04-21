@@ -20,7 +20,6 @@ public class Individuals {
 	}
 	
 	public static OWLNamedIndividual getIndividual(URI uri, OntologyToolset bundle){
-                //return getIndividual(uri.toASCIIString(), bundle);
                 return getIndividual(uri.toString(), bundle);
 	}
 	
