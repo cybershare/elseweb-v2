@@ -8,7 +8,7 @@ import org.w3c.dom.Document;
 public class OccurrenceSetsXML {
 	
 	private Document doc;
-	private static String occurrenceSetsXMLURL = "http://www.lifemapper.org/services/sdm/occurrences/xml?minimumNumberOfPoints=100&perPage=1000&fullObjects=1";
+	private static String occurrenceSetsXMLURL = "http://www.lifemapper.org/services/sdm/occurrences/xml?minimumNumberOfPoints=100&perPage=3000&fullObjects=1";
 	
 	public OccurrenceSetsXML(){
 		doc = getDocument();
